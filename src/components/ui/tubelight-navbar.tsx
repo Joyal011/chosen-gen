@@ -43,11 +43,11 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 pt-4 px-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:px-0 md:pt-6",
+        "fixed bottom-0 left-0 right-0 z-50 pb-2 px-2 sm:bottom-auto sm:top-0 sm:left-1/2 sm:-translate-x-1/2 sm:px-0 sm:pt-4 md:pt-6",
         className,
       )}
     >
-      <div className="flex items-center gap-2 md:gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg overflow-x-auto overflow-y-hidden scrollbar-hide max-w-full">
+      <div className="flex items-center justify-around sm:justify-center gap-1 sm:gap-2 md:gap-3 bg-background/95 sm:bg-background/5 border border-border backdrop-blur-lg py-2 sm:py-1 px-2 sm:px-1 rounded-2xl sm:rounded-full shadow-lg">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -58,13 +58,14 @@ export function NavBar({ items, className }: NavBarProps) {
               to={item.url}
               onClick={() => setActiveTab(item.name)}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-4 md:px-6 py-2 rounded-full transition-colors overflow-hidden whitespace-nowrap flex-shrink-0",
-                "text-foreground/80 hover:text-primary",
-                isActive && "bg-muted text-primary",
+                "relative cursor-pointer text-xs sm:text-sm font-semibold px-2 sm:px-4 md:px-6 py-2 sm:py-2 rounded-xl sm:rounded-full transition-colors overflow-hidden whitespace-nowrap flex flex-col sm:flex-row items-center gap-1 sm:gap-0",
+                "text-foreground/70 hover:text-primary",
+                isActive && "bg-primary/10 sm:bg-muted text-primary",
               )}
             >
-              <span>{item.name}</span>
-              {isActive && (
+              <Icon className="h-5 w-5 sm:hidden" />
+              <span className="text-[10px] sm:text-sm">{isMobile ? item.name.slice(0, 6) : item.name}</span>
+              {isActive && !isMobile && (
                 <motion.div
                   layoutId="lamp"
                   className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10"
