@@ -17,14 +17,14 @@ const Newsletter = () => {
       setIsLoading(true);
       try {
         await emailjs.send(
-          "service_xmj1h5f", // EmailJS Service ID
-          "template_5v1n4ib", // EmailJS Template ID
+          "service_xmj1h5f",
+          "template_5v1n4ib",
           {
             to_email: email,
             from_name: "Chosen Generation",
             message: "Thank you for subscribing to our newsletter!",
           },
-          "kZVDVKLdYvKslPL5b" // EmailJS Public Key
+          "kZVDVKLdYvKslPL5b"
         );
         
         setIsSubmitted(true);
@@ -50,57 +50,57 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+    <section className="py-10 sm:py-14 md:py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
+      {/* Decorative elements - hidden on mobile */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none hidden sm:block">
         <div className="absolute top-10 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-10 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute bottom-10 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <div className="animate-fade-up">
-            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-r from-primary to-secondary mb-4 sm:mb-6 animate-glow">
-              <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-primary to-secondary mb-3 sm:mb-4 md:mb-6 animate-glow">
+              <Mail className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 px-4">
+            <h2 className="text-xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">
               Stay <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Connected</span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-              Subscribe to receive updates about upcoming events, inspiring stories, and opportunities to grow in faith with our community
+            <p className="text-sm sm:text-base md:text-xl text-muted-foreground mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed">
+              Subscribe to receive updates about events and opportunities to grow in faith
             </p>
           </div>
 
           {!isSubmitted ? (
-            <form onSubmit={handleSubmit} className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-xl mx-auto px-4">
+            <form onSubmit={handleSubmit} className="animate-fade-up">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-xl mx-auto">
                 <Input
                   type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 sm:h-14 text-base sm:text-lg px-4 sm:px-6 bg-background/80 backdrop-blur-sm border-2 border-primary/20 focus:border-primary"
+                  className="h-11 sm:h-12 md:h-14 text-sm sm:text-base px-4 bg-background/80 backdrop-blur-sm border-2 border-primary/20 focus:border-primary"
                   required
                 />
                 <Button 
                   type="submit"
                   size="lg"
-                  className="h-12 sm:h-14 px-6 sm:px-8 font-semibold whitespace-nowrap w-full sm:w-auto"
+                  className="h-11 sm:h-12 md:h-14 px-5 sm:px-6 md:px-8 font-semibold whitespace-nowrap text-sm sm:text-base"
                   disabled={isLoading}
                 >
-                  {isLoading ? "Subscribing..." : "Subscribe"}
-                  <Send className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                  {isLoading ? "..." : "Subscribe"}
+                  <Send className="w-4 h-4 ml-2" />
                 </Button>
               </div>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4 px-4">
+              <p className="text-xs text-muted-foreground mt-2 sm:mt-3">
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </form>
           ) : (
-            <div className="animate-fade-up flex flex-col items-center justify-center py-6 sm:py-8 px-4">
-              <CheckCircle2 className="w-12 h-12 sm:w-16 sm:h-16 text-primary mb-3 sm:mb-4 animate-pulse" />
-              <p className="text-xl sm:text-2xl font-semibold text-foreground">Thank you for subscribing!</p>
-              <p className="text-sm sm:text-base text-muted-foreground mt-2">Check your email for confirmation.</p>
+            <div className="animate-fade-up flex flex-col items-center justify-center py-4 sm:py-6">
+              <CheckCircle2 className="w-10 h-10 sm:w-14 sm:h-14 text-primary mb-2 sm:mb-3 animate-pulse" />
+              <p className="text-lg sm:text-xl font-semibold text-foreground">Thank you for subscribing!</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Check your email for confirmation.</p>
             </div>
           )}
         </div>

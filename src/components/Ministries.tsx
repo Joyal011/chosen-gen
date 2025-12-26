@@ -6,76 +6,77 @@ const Ministries = () => {
     {
       icon: Music,
       title: "Worship & Music",
-      description: "Experience powerful worship through contemporary music and traditional hymns that connect hearts to God.",
+      description: "Experience powerful worship through contemporary music and traditional hymns.",
       gradient: "from-primary to-secondary"
     },
     {
       icon: BookOpen,
       title: "Bible Study",
-      description: "Dive deep into Scripture through interactive studies that equip youth to understand and apply God's Word.",
+      description: "Dive deep into Scripture through interactive studies that equip youth.",
       gradient: "from-secondary to-accent"
     },
     {
       icon: Users,
       title: "Small Groups",
-      description: "Build authentic friendships in small group settings where youth can share, pray, and grow together.",
+      description: "Build authentic friendships where youth can share, pray, and grow.",
       gradient: "from-accent to-primary"
     },
     {
       icon: HeartHandshake,
-      title: "Community Outreach",
-      description: "Serve the community through compassion projects, demonstrating Christ's love in practical ways.",
+      title: "Outreach",
+      description: "Serve the community through compassion projects demonstrating Christ's love.",
       gradient: "from-primary to-accent"
     },
     {
       icon: Sparkles,
       title: "Youth Events",
-      description: "Join exciting events, camps, and conferences designed to strengthen faith and create lasting memories.",
+      description: "Join exciting events, camps, and conferences to strengthen faith.",
       gradient: "from-secondary to-primary"
     },
     {
       icon: Mountain,
-      title: "Leadership Development",
-      description: "Discover and develop your God-given gifts through leadership training and mentorship opportunities.",
+      title: "Leadership",
+      description: "Discover and develop your God-given gifts through training and mentorship.",
       gradient: "from-accent to-secondary"
     }
   ];
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
-      {/* Floating background elements */}
-      <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-40 left-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
+    <section className="py-10 sm:py-16 md:py-20 bg-background relative overflow-hidden">
+      {/* Floating background - hidden on mobile */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float hidden md:block" />
+      <div className="absolute bottom-40 left-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-float hidden md:block" />
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm mb-4">
-            <Sparkles className="w-4 h-4" />
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-fade-up">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm mb-3 sm:mb-4">
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="font-medium">Our Ministries</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4">
             What <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">We Do</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Discover the various ways we nurture faith, build community, and empower youth to live purposefully
+          <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Discover how we nurture faith, build community, and empower youth
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {/* Grid - 1 col mobile, 2 col tablet, 3 col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-7xl mx-auto">
           {ministries.map((ministry, index) => (
             <Card 
               key={index}
-              className="group hover:shadow-elevated transition-all duration-300 hover:-translate-y-2 animate-fade-up overflow-hidden border-2 border-transparent hover:border-primary/20"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2 animate-fade-up overflow-hidden border border-border/50 hover:border-primary/20"
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <CardHeader>
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${ministry.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <ministry.icon className="w-7 h-7 text-white" />
+              <CardHeader className="p-4 sm:p-5 md:p-6 pb-2 sm:pb-3">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-r ${ministry.gradient} flex items-center justify-center mb-2 sm:mb-3 md:mb-4 group-hover:scale-105 transition-transform`}>
+                  <ministry.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
                 </div>
-                <CardTitle className="text-2xl">{ministry.title}</CardTitle>
+                <CardTitle className="text-base sm:text-lg md:text-xl">{ministry.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">
+              <CardContent className="p-4 sm:p-5 md:p-6 pt-0">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   {ministry.description}
                 </p>
               </CardContent>
